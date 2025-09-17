@@ -1,6 +1,6 @@
 from comfy import sd1_clip
 import comfy.text_encoders.llama
-from .qwen_image import QwenImageTokenizer, QwenImageTEModel
+from .qwen_image import QwenImageTokenizer
 from transformers import ByT5Tokenizer
 import os
 import re
@@ -117,6 +117,8 @@ class HunyuanImageTEModel(sd1_clip.SD1ClipModel):
             return self.byt5_small.load_sd(sd)
         else:
             return super().load_sd(sd)
+
+
 class HunyuanImageRefinerTEModel(sd1_clip.SD1ClipModel):
     def __init__(self, device="cpu", dtype=None, model_options={}):
         super().__init__(device=device, dtype=dtype, name="qwen25_7b", clip_model=Qwen25_7BVLIModel, model_options=model_options)
@@ -142,6 +144,7 @@ class HunyuanImageRefinerTEModel(sd1_clip.SD1ClipModel):
 
 
 def te(byt5=True, dtype_llama=None, llama_scaled_fp8=None, refiner=False):
+
     class HunyuanImageTEModel_(HunyuanImageTEModel):
 
         def __init__(self, device="cpu", dtype=None, model_options={}):
@@ -151,6 +154,7 @@ def te(byt5=True, dtype_llama=None, llama_scaled_fp8=None, refiner=False):
             if dtype_llama is not None:
                 dtype = dtype_llama
             super().__init__(byt5=byt5, device=device, dtype=dtype, model_options=model_options)
+
     class HunyuanImageTEModel_refiner(HunyuanImageRefinerTEModel):
         def __init__(self, device="cpu", dtype=None, model_options={}):
             if llama_scaled_fp8 is not None and "scaled_fp8" not in model_options:
@@ -161,4 +165,5 @@ def te(byt5=True, dtype_llama=None, llama_scaled_fp8=None, refiner=False):
             assert refiner, "refiner must be True"
             assert not byt5, "byt5 must be False"
             super().__init__(device=device, dtype=dtype, model_options=model_options)
+
     return HunyuanImageTEModel_refiner if refiner else HunyuanImageTEModel_
