@@ -3,6 +3,8 @@
 # ComfyUI [with HunyuanImage2.1 support]
 **The most powerful and modular visual AI engine and application.**
 
+**This repository is a fork of [ComfyUI](https://github.com/comfyanonymous/ComfyUI), which properly implements [HunyuanImage2.1](https://github.com/Tencent-Hunyuan/HunyuanImage-2.1).**
+
 
 [![Website][website-shield]][website-url]
 [![Dynamic JSON Badge][discord-shield]][discord-url]
@@ -37,7 +39,7 @@ ComfyUI lets you design and execute advanced stable diffusion pipelines using a 
 
 ## Get Started with HunyuanImage2.1
 
-Install ComfyUI following [this link](https://github.com/comfyanonymous/ComfyUI)
+Install ComfyUI following [this link](https://github.com/comfyanonymous/ComfyUI).
 
 ### Basic Workflow
 
