@@ -57,6 +57,9 @@ Download and put in your ComfyUI/models/vae directory:
 Download and put in your ComfyUI/models/diffusion_models directory:
 - [diffusion models](https://huggingface.co/Comfy-Org/HunyuanImage_2.1_ComfyUI/tree/main/split_files/diffusion_models)
 
+#### Workflow
 You can then load up or drag the following workflow in ComfyUI:
 [hunyuan_image_2.1_workflow.json](./HunyuanImage-2.1.json)
 
+Distill model workflow (faster speed but slightly lower quality):
+[hunyuan_image_2.1_distill_workflow.json](./HunyuanImage-2.1-distill.json)
