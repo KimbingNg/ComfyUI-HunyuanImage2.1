@@ -1,0 +1,1355 @@
+{
+  "id": "242a6140-7341-49ca-876b-c01366b39b84",
+  "revision": 0,
+  "last_node_id": 90,
+  "last_link_id": 161,
+  "nodes": [
+    {
+      "id": 26,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -209.07138061523438,
+        61.42925262451172
+      ],
+      "size": [
+        432.8055114746094,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            130,
+            135
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_2.5_vl_7b.safetensors",
+        "byt5_small_glyphxl_fp16.safetensors",
+        "hunyuan_image",
+        "default"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "EmptyHunyuanImageLatent",
+      "pos": [
+        356.15948486328125,
+        480.0320129394531
+      ],
+      "size": [
+        273.4507751464844,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            55
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyHunyuanImageLatent"
+      },
+      "widgets_values": [
+        2048,
+        2048,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1261.330078125,
+        189.2389373779297
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            154
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "VAELoader",
+      "pos": [
+        -200.54489135742188,
+        326.5038146972656
+      ],
+      "size": [
+        381.0045166015625,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "hunyuan_image_2.1_vae_fp16.safetensors"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "UNETLoader",
+      "pos": [
+        -214.24563598632812,
+        -229.01019287109375
+      ],
+      "size": [
+        345.8827819824219,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            156
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "hunyuanimage2.1_bf16.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 57,
+      "type": "Note",
+      "pos": [
+        870.2437744140625,
+        506.7431945800781
+      ],
+      "size": [
+        308.34088134765625,
+        94.9217758178711
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "These are settings for the regular model.\n\nFor the distilled model use 8 steps cfg 1.0"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 70,
+      "type": "CLIPTextEncodeHunyuanDiTWithTextDetection",
+      "pos": [
+        319.3144226074219,
+        188.1533660888672
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            133
+          ]
+        },
+        {
+          "name": "has_quoted_text",
+          "type": "HAS_QUOTED_TEXT",
+          "links": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            161
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeHunyuanDiTWithTextDetection"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 86,
+      "type": "259f35d0-4dd5-4304-852d-654ca61325c1",
+      "pos": [
+        1659.1048583984375,
+        162.1075439453125
+      ],
+      "size": [
+        210,
+        82
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "positive_text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 160
+        },
+        {
+          "label": "negative_text",
+          "name": "text_1",
+          "type": "STRING",
+          "widget": {
+            "name": "text_1"
+          },
+          "link": 161
+        },
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            155
+          ]
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 41,
+      "type": "SaveImage",
+      "pos": [
+        1978.227294921875,
+        163.0198974609375
+      ],
+      "size": [
+        883.3683471679688,
+        930.5321044921875
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 155
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 87,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        -196.80111694335938,
+        -72.21749877929688
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 156
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            157
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        5
+      ]
+    },
+    {
+      "id": 56,
+      "type": "Note",
+      "pos": [
+        1652.6826171875,
+        3.4015755653381348
+      ],
+      "size": [
+        306.5500183105469,
+        100.29435729980469
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "This is the refiner, unbypass to use it. Go inside the subgraph to adjust it."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 89,
+      "type": "Note",
+      "pos": [
+        318.3027038574219,
+        -600.9381713867188
+      ],
+      "size": [
+        326.7595520019531,
+        122.36941528320312
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "For better quality of generated images\n\ngeneral_start_step should be 0.1 * total steps\n\nocr_start_step should be 0.75 * total steps"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        863,
+        186
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 159
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 131
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 133
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        569565464319698,
+        "randomize",
+        50,
+        3.5,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 69,
+      "type": "CLIPTextEncodeHunyuanDiTWithTextDetection",
+      "pos": [
+        314.4822692871094,
+        -82.48628997802734
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 130
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            131
+          ]
+        },
+        {
+          "name": "has_quoted_text",
+          "type": "HAS_QUOTED_TEXT",
+          "links": [
+            158
+          ]
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            160
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeHunyuanDiTWithTextDetection"
+      },
+      "widgets_values": [
+        "A cute, cartoon-style anthropomorphic penguin plush toy stands inside a painting studio, intently working on a canvas. The penguin, characterized by its soft, white and gray fluffy fur, is dressed in a warm, red knitted scarf with a ribbed texture and a matching red beret, which has the word \"Tencent\" written on it in a white, sans-serif font. It leans forward with an expression of concentration, holding a thin paintbrush with brown bristles in its flipper, dabbing at the canvas. In front of the penguin is an easel holding a painting of the Mona Lisa, rendered with photorealistic detail, showing visible brushstrokes and thick paint. The background of the studio is filled with painting supplies, including a palette with multi-colored paint and jars of solvents. The overall presentation combines a digital illustration style for the penguin and studio with a separate layer of photorealistic photography for the Mona Lisa painting."
+      ]
+    },
+    {
+      "id": 88,
+      "type": "HunyuanMixModeAPG",
+      "pos": [
+        318.8069763183594,
+        -411.8346252441406
+      ],
+      "size": [
+        294.083984375,
+        270
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 157
+        },
+        {
+          "name": "has_quoted_text",
+          "type": "HAS_QUOTED_TEXT",
+          "link": 158
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            159
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HunyuanMixModeAPG"
+      },
+      "widgets_values": [
+        10,
+        0,
+        10,
+        -0.5,
+        5,
+        0,
+        10,
+        -0.5,
+        38
+      ]
+    }
+  ],
+  "links": [
+    [
+      7,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      34,
+      15,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      55,
+      29,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      130,
+      26,
+      0,
+      69,
+      0,
+      "CLIP"
+    ],
+    [
+      131,
+      69,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      133,
+      70,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      135,
+      26,
+      0,
+      70,
+      0,
+      "CLIP"
+    ],
+    [
+      154,
+      8,
+      0,
+      86,
+      2,
+      "IMAGE"
+    ],
+    [
+      155,
+      86,
+      0,
+      41,
+      0,
+      "IMAGE"
+    ],
+    [
+      156,
+      13,
+      0,
+      87,
+      0,
+      "MODEL"
+    ],
+    [
+      157,
+      87,
+      0,
+      88,
+      0,
+      "MODEL"
+    ],
+    [
+      158,
+      69,
+      1,
+      88,
+      1,
+      "HAS_QUOTED_TEXT"
+    ],
+    [
+      159,
+      88,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      160,
+      69,
+      2,
+      86,
+      0,
+      "STRING"
+    ],
+    [
+      161,
+      70,
+      2,
+      86,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "259f35d0-4dd5-4304-852d-654ca61325c1",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 85,
+          "lastLinkId": 154,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "Refiner Subgraph",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            1984.220947265625,
+            138.35448455810547,
+            120,
+            100
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            4425.421875,
+            158.35448455810547,
+            120,
+            60
+          ]
+        },
+        "inputs": [
+          {
+            "id": "b5d60fe0-4bac-4e50-8109-0e68585d6512",
+            "name": "text",
+            "type": "STRING",
+            "linkIds": [
+              151
+            ],
+            "localized_name": "text",
+            "label": "positive_text",
+            "pos": {
+              "0": 2084.220947265625,
+              "1": 158.3544921875
+            }
+          },
+          {
+            "id": "470230e9-5506-4a8c-b9e9-d3c17d9e04a1",
+            "name": "text_1",
+            "type": "STRING",
+            "linkIds": [
+              150,
+              153
+            ],
+            "localized_name": "text_1",
+            "label": "negative_text",
+            "pos": {
+              "0": 2084.220947265625,
+              "1": 178.3544921875
+            }
+          },
+          {
+            "id": "f2ae10e4-a754-4fd3-9c6d-cf9bdf6f0e2a",
+            "name": "pixels",
+            "type": "IMAGE",
+            "linkIds": [
+              144
+            ],
+            "localized_name": "pixels",
+            "pos": {
+              "0": 2084.220947265625,
+              "1": 198.3544921875
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "id": "f5cdd23f-2fd0-44bd-8766-61e781cc9531",
+            "name": "IMAGE",
+            "type": "IMAGE",
+            "linkIds": [
+              145
+            ],
+            "localized_name": "IMAGE",
+            "pos": {
+              "0": 4445.421875,
+              "1": 178.3544921875
+            }
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 81,
+            "type": "KSampler",
+            "pos": [
+              3745.422119140625,
+              64.19218444824219
+            ],
+            "size": [
+              315,
+              262
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 4,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 139
+              },
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 140
+              },
+              {
+                "localized_name": "negative",
+                "name": "negative",
+                "type": "CONDITIONING",
+                "link": 141
+              },
+              {
+                "localized_name": "latent_image",
+                "name": "latent_image",
+                "type": "LATENT",
+                "link": 142
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "slot_index": 0,
+                "links": [
+                  137
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+              100,
+              "fixed",
+              4,
+              1,
+              "euler",
+              "simple",
+              1
+            ]
+          },
+          {
+            "id": 80,
+            "type": "VAEDecode",
+            "pos": [
+              4155.421875,
+              74.19218444824219
+            ],
+            "size": [
+              210,
+              46
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 4,
+            "inputs": [
+              {
+                "localized_name": "samples",
+                "name": "samples",
+                "type": "LATENT",
+                "link": 137
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 138
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "slot_index": 0,
+                "links": [
+                  145
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecode"
+            },
+            "widgets_values": []
+          },
+          {
+            "id": 83,
+            "type": "CLIPLoader",
+            "pos": [
+              2232.908203125,
+              381.985107421875
+            ],
+            "size": [
+              270,
+              106
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 4,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "CLIP",
+                "name": "CLIP",
+                "type": "CLIP",
+                "links": [
+                  146,
+                  147
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPLoader"
+            },
+            "widgets_values": [
+              "qwen_2.5_vl_7b.safetensors",
+              "hunyuan_image_refiner",
+              "default"
+            ]
+          },
+          {
+            "id": 79,
+            "type": "UNETLoader",
+            "pos": [
+              3342.943359375,
+              -114.7917251586914
+            ],
+            "size": [
+              345.8827819824219,
+              82
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 4,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  139
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "UNETLoader"
+            },
+            "widgets_values": [
+              "hunyuanimage2.1_refiner_bf16.safetensors",
+              "default"
+            ]
+          },
+          {
+            "id": 82,
+            "type": "HunyuanRefinerLatent",
+            "pos": [
+              3475.422119140625,
+              84.19218444824219
+            ],
+            "size": [
+              212.08203125,
+              98
+            ],
+            "flags": {},
+            "order": 6,
+            "mode": 4,
+            "inputs": [
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 152
+              },
+              {
+                "localized_name": "negative",
+                "name": "negative",
+                "type": "CONDITIONING",
+                "link": 154
+              },
+              {
+                "localized_name": "latent",
+                "name": "latent",
+                "type": "LATENT",
+                "link": 143
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "links": [
+                  140
+                ]
+              },
+              {
+                "localized_name": "negative",
+                "name": "negative",
+                "type": "CONDITIONING",
+                "links": [
+                  141
+                ]
+              },
+              {
+                "localized_name": "latent",
+                "name": "latent",
+                "type": "LATENT",
+                "links": [
+                  142
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "HunyuanRefinerLatent"
+            },
+            "widgets_values": [
+              0.25
+            ]
+          },
+          {
+            "id": 85,
+            "type": "CLIPTextEncodeHunyuanImageRefiner",
+            "pos": [
+              2857.75439453125,
+              244.75498962402344
+            ],
+            "size": [
+              344.2642517089844,
+              58
+            ],
+            "flags": {},
+            "order": 8,
+            "mode": 4,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 147
+              },
+              {
+                "localized_name": "text",
+                "name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": 151
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "conditioning",
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "links": [
+                  152
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncodeHunyuanImageRefiner"
+            },
+            "widgets_values": [
+              ""
+            ]
+          },
+          {
+            "id": 84,
+            "type": "CLIPTextEncodeHunyuanImageRefiner",
+            "pos": [
+              2854.829833984375,
+              388.914794921875
+            ],
+            "size": [
+              344.2642517089844,
+              58
+            ],
+            "flags": {},
+            "order": 7,
+            "mode": 4,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 146
+              },
+              {
+                "localized_name": "text",
+                "name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": 153
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "conditioning",
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "links": [
+                  154
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncodeHunyuanImageRefiner"
+            },
+            "widgets_values": [
+              ""
+            ]
+          },
+          {
+            "id": 77,
+            "type": "VAELoader",
+            "pos": [
+              2323.762451171875,
+              -17.356103897094727
+            ],
+            "size": [
+              270,
+              58
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 4,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "links": [
+                  136,
+                  138
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAELoader"
+            },
+            "widgets_values": [
+              "hunyuan_image_refiner_vae_fp16.safetensors"
+            ]
+          },
+          {
+            "id": 78,
+            "type": "VAEEncode",
+            "pos": [
+              2912.435546875,
+              92.47306823730469
+            ],
+            "size": [
+              140,
+              46
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 4,
+            "inputs": [
+              {
+                "localized_name": "pixels",
+                "name": "pixels",
+                "type": "IMAGE",
+                "link": 144
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 136
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [
+                  143
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEEncode"
+            },
+            "widgets_values": []
+          }
+        ],
+        "groups": [],
+        "links": [
+          {
+            "id": 147,
+            "origin_id": 83,
+            "origin_slot": 0,
+            "target_id": 85,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 146,
+            "origin_id": 83,
+            "origin_slot": 0,
+            "target_id": 84,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 136,
+            "origin_id": 77,
+            "origin_slot": 0,
+            "target_id": 78,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 143,
+            "origin_id": 78,
+            "origin_slot": 0,
+            "target_id": 82,
+            "target_slot": 2,
+            "type": "LATENT"
+          },
+          {
+            "id": 139,
+            "origin_id": 79,
+            "origin_slot": 0,
+            "target_id": 81,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 140,
+            "origin_id": 82,
+            "origin_slot": 0,
+            "target_id": 81,
+            "target_slot": 1,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 141,
+            "origin_id": 82,
+            "origin_slot": 1,
+            "target_id": 81,
+            "target_slot": 2,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 142,
+            "origin_id": 82,
+            "origin_slot": 2,
+            "target_id": 81,
+            "target_slot": 3,
+            "type": "LATENT"
+          },
+          {
+            "id": 137,
+            "origin_id": 81,
+            "origin_slot": 0,
+            "target_id": 80,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 138,
+            "origin_id": 77,
+            "origin_slot": 0,
+            "target_id": 80,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 151,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 85,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 144,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 78,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 145,
+            "origin_id": 80,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 152,
+            "origin_id": 85,
+            "origin_slot": 0,
+            "target_id": 82,
+            "target_slot": 0,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 153,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 84,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 154,
+            "origin_id": 84,
+            "origin_slot": 0,
+            "target_id": 82,
+            "target_slot": 1,
+            "type": "CONDITIONING"
+          }
+        ],
+        "extra": {}
+      }
+    ]
+  },
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6407825959081147,
+      "offset": [
+        871.9203371120155,
+        813.7159762127269
+      ]
+    },
+    "frontendVersion": "1.26.11"
+  },
+  "version": 0.4
+}
