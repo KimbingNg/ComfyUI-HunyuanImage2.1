@@ -62,8 +62,8 @@ Download and put in your ComfyUI/models/diffusion_models directory:
 #### Workflow
 You can then load up or drag the following workflow in ComfyUI:
 
-* Non-distill model workflow:
+* Non-distill model workflow (50-100 steps inference):
 [hunyuan_image_2.1_workflow.json](./HunyuanImage-2.1.json)
 
-* Distill model workflow (faster speed but slightly lower quality):
+* Distill model workflow (faster speed with 8-step inference but slightly lower quality):
 [hunyuan_image_2.1_distill_workflow.json](./HunyuanImage-2.1-distill.json)
