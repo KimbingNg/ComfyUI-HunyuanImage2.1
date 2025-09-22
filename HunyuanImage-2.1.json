@@ -267,18 +267,12 @@
           "label": "positive_text",
           "name": "text",
           "type": "STRING",
-          "widget": {
-            "name": "text"
-          },
           "link": 160
         },
         {
           "label": "negative_text",
           "name": "text_1",
           "type": "STRING",
-          "widget": {
-            "name": "text_1"
-          },
           "link": 161
         },
         {
@@ -297,10 +291,7 @@
         }
       ],
       "properties": {},
-      "widgets_values": [
-        "",
-        ""
-      ]
+      "widgets_values": []
     },
     {
       "id": 41,
@@ -565,11 +556,11 @@
         0,
         10,
         -0.5,
-        5,
+        0.1,
         0,
         10,
         -0.5,
-        38
+        0.75
       ]
     }
   ],
@@ -1048,29 +1039,29 @@
             "mode": 4,
             "inputs": [
               {
-                "localized_name": "clip",
                 "name": "clip",
                 "type": "CLIP",
-                "link": 147
+                "link": 147,
+                "localized_name": "clip"
               },
               {
-                "localized_name": "text",
                 "name": "text",
                 "type": "STRING",
+                "link": 151,
+                "localized_name": "text",
                 "widget": {
                   "name": "text"
-                },
-                "link": 151
+                }
               }
             ],
             "outputs": [
               {
-                "localized_name": "conditioning",
                 "name": "conditioning",
                 "type": "CONDITIONING",
                 "links": [
                   152
-                ]
+                ],
+                "localized_name": "conditioning"
               }
             ],
             "properties": {
@@ -1096,29 +1087,29 @@
             "mode": 4,
             "inputs": [
               {
-                "localized_name": "clip",
                 "name": "clip",
                 "type": "CLIP",
-                "link": 146
+                "link": 146,
+                "localized_name": "clip"
               },
               {
-                "localized_name": "text",
                 "name": "text",
                 "type": "STRING",
+                "link": 153,
+                "localized_name": "text",
                 "widget": {
                   "name": "text"
-                },
-                "link": 153
+                }
               }
             ],
             "outputs": [
               {
-                "localized_name": "conditioning",
                 "name": "conditioning",
                 "type": "CONDITIONING",
                 "links": [
                   154
-                ]
+                ],
+                "localized_name": "conditioning"
               }
             ],
             "properties": {
@@ -1343,10 +1334,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6407825959081147,
+      "scale": 0.5825296326437409,
       "offset": [
-        871.9203371120155,
-        813.7159762127269
+        838.1453289298427,
+        584.0325020929956
       ]
     },
     "frontendVersion": "1.26.11"
