@@ -230,7 +230,7 @@
         },
         {
           "name": "has_quoted_text",
-          "type": "HAS_QUOTED_TEXT",
+          "type": "BOOLEAN",
           "links": null
         },
         {
@@ -453,7 +453,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        569565464319698,
+        521775898403508,
         "randomize",
         50,
         3.5,
@@ -493,7 +493,7 @@
         },
         {
           "name": "has_quoted_text",
-          "type": "HAS_QUOTED_TEXT",
+          "type": "BOOLEAN",
           "links": [
             158
           ]
@@ -522,7 +522,7 @@
       ],
       "size": [
         294.083984375,
-        270
+        274
       ],
       "flags": {},
       "order": 10,
@@ -535,7 +535,10 @@
         },
         {
           "name": "has_quoted_text",
-          "type": "HAS_QUOTED_TEXT",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "has_quoted_text"
+          },
           "link": 158
         }
       ],
@@ -552,6 +555,7 @@
         "Node name for S&R": "HunyuanMixModeAPG"
       },
       "widgets_values": [
+        10,
         10,
         0,
         10,
@@ -1334,10 +1338,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5825296326437409,
+      "scale": 0.4629329387866058,
       "offset": [
-        838.1453289298427,
-        584.0325020929956
+        679.6702670920378,
+        548.3872803135594
       ]
     },
     "frontendVersion": "1.26.11"
