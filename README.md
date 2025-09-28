@@ -39,7 +39,18 @@ ComfyUI lets you design and execute advanced stable diffusion pipelines using a 
 
 ## Get Started with HunyuanImage2.1
 
-Install ComfyUI following [this link](https://github.com/comfyanonymous/ComfyUI).
+Clone this repository and installing dependencies:
+
+```bash
+git clone git@github.com:KimbingNg/ComfyUI-HunyuanImage2.1.git
+pip3 install -r requirements.txt
+```
+
+Run ComfyUI:
+```bash
+python3 main.py --listen --port 443
+```
+
 
 ### Basic Workflow
 
